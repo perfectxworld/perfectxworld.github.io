@@ -38,10 +38,7 @@
     function go() {
       if (shouldRedirect()) {
         const finalUrl = atob(encodedUrl);
-        const delay = Math.floor(Math.random() * 800) + 300; // หน่วงเวลา 300-1100ms
-        setTimeout(() => {
-          window.location.href = finalUrl;
-        }, delay);
+        window.location.href = finalUrl; // ไม่มีหน่วงเวลา
       } else {
         document.body.innerHTML = "<h1>ไม่สามารถเปลี่ยนเส้นทางได้</h1><p>คุณอาจเข้าผิดลิงก์ หรือระบบป้องกันบล็อกไว้</p>";
       }
