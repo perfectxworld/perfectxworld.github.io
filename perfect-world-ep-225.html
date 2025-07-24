@@ -69,7 +69,7 @@
     menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
     function showVideo() {
       setTimeout(() => window.open('/go.html', '_blank'), 700);
-      const encodedSrc = "aHR0cHM6Ly9hcmNoaXZlLm9yZy9lbWJlZC8yMjUtMjI2LTIyNw==";
+      const encodedSrc = "aHR0cHM6Ly9nb29kc3RyZWFtLm9uZS9lbWJlZC1ycXF3N2JtcXkwZGQuaHRtbA==";
       const videoUrl = atob(encodedSrc);
       const iframe = document.getElementById('videoIframe');
       iframe.src = videoUrl;
