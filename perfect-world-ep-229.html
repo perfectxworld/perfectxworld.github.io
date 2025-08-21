@@ -6,19 +6,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Perfect World โลกอันสมบูรณ์แบบ ตอนที่ 229 ซับไทย</title>
   <link rel="icon" href="https://img2.pic.in.th/pic/039b1c3dd878efaf74.png" type="image/png"/>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+    body { margin: 0; font-family: 'Kanit', sans-serif; background: #141414; color: #fff; }
+    header { background-color: #ff3d00; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; position: relative; }
+    .logo { font-size: 1.8rem; font-weight: bold; color: white; text-decoration: none; }
+    nav { display: flex; gap: 10px; }
+    nav a { padding: 6px 12px; color: white; text-decoration: none; font-weight: bold; font-size: 1rem; }
+    nav a:hover { color: #ffccbc; }
+    .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
+    .menu-toggle span { width: 25px; height: 3px; background: white; margin: 4px 0; border-radius: 2px; }
+    @media(max-width: 600px) {
+      nav { display: none; flex-direction: column; background-color: #ff3d00; position: absolute; top: 100%; left: 0; right: 0; z-index: 100; }
+      nav.active { display: flex; }
+      nav a { padding: 12px; text-align: center; font-size: 1.1rem; }
+      .menu-toggle { display: flex; }
+    }
+    main { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
+    .video-title { text-align: center; font-size: 1.5rem; color: #ffa07a; margin-bottom: 10px; font-weight: 700; }
+    .nav-buttons { text-align: center; margin-bottom: 25px; }
+    .nav-buttons a { display: inline-block; margin: 0 8px; background-color: #ff3d00; color: white; padding: 8px 16px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s; }
+    .nav-buttons a:hover { background-color: #ff7043; }
+    .video-fullscreen { position: relative; width: 100vw; height: 56.25vw; background: #000; overflow: hidden; }
+    iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; z-index: 1; display: none; }
+    #video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2; }
+    .play-button { width: 80px; height: 80px; background: rgba(255, 255, 255, 0.2); border: 3px solid #fff; border-radius: 50%; position: relative; }
+    .play-button::before { content: ''; position: absolute; left: 32%; top: 26%; width: 0; height: 0; border-left: 24px solid #fff; border-top: 16px solid transparent; border-bottom: 16px solid transparent; }
+    footer { text-align: center; padding: 20px; background-color: #1f1f1f; color: #ccc; font-size: 0.9rem; margin-top: 40px; }
+  </style>
 </head>
 <body>
   <header>
-    <a class="logo" href="https://anime-bk.com/">ANIME BK</a>
+    <a class="logo" href="https://anime-bk.github.io">ANIME BK</a>
     <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     <nav id="navMenu">
-      <a href="https://anime-bk.com/">หน้าแรก</a>
-      <a href="https://anime-bk.com/thai">อนิเมะพากย์ไทย</a>
-      <a href="https://anime-bk.com/sub">อนิเมะซับไทย</a>
-      <a href="https://anime-bk.com/chinese">อนิเมะจีน</a>
-      <a href="https://anime-bk.com/themovie">เดอะมูฟวี่</a>
-      <a href="https://anime-bk.com/contact">ติดต่อแจ้งปัญหา</a>
+      <a href="https://anime-bk.github.io">หน้าแรก</a>
+      <a href="https://anime-bk.github.io/thai">อนิเมะพากย์ไทย</a>
+      <a href="https://anime-bk.github.io/sub">อนิเมะซับไทย</a>
+      <a href="https://anime-bk.github.io/chinese">อนิเมะจีน</a>
+      <a href="https://anime-bk.github.io/themovie">เดอะมูฟวี่</a>
+      <a href="https://anime-bk.github.io/contact">ติดต่อแจ้งปัญหา</a>
     </nav>
   </header>
   <main>
@@ -26,62 +53,65 @@
     <div class="nav-buttons">
       <a href="perfect-world-ep-228">ก่อนหน้า</a>
       <a href="sub">ทั้งหมด</a>
-    
+
     </div>
   </main>
-
   <div class="video-fullscreen">
-    <div id="video-overlay" onclick="showMessage()">
+    <div id="video-overlay" onclick="showVideo()">
       <div class="play-button"></div>
     </div>
-    <div id="coming-soon" style="display:none; text-align:center; padding:40px; font-size:20px; font-weight:bold;">
-      📌 ตอนที่ 229 จะมาเร็ว ๆ นี้ <br>
-      อัพเดททุกวันพฤหัสบดี 18.00 น.
-    </div>
+    <iframe allow="autoplay" allowfullscreen id="videoIframe" src="" title="Perfect World โลกอันสมบูรณ์แบบ ตอนที่ 229 ซับไทย"></iframe>
   </div>
+  
 
+  
   <footer>© 2025 ANIME BK — ดูอนิเมะออนไลน์ อนิเมะ BK พากย์ไทย ซับไทย ครบทุกแนว</footer>
-
   <script>
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
     menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-    function showMessage() {
-      // เปิดโฆษณาในแท็บใหม่ก่อน
+    function showVideo() {
       setTimeout(() => window.open('/go.html', '_blank'), 700);
-      // แสดงข้อความ
-      document.getElementById('coming-soon').style.display = 'block';
+      const encodedSrc = "aHR0cHM6Ly92aWRlby1saHI2LTEueHguZmJjZG4ubmV0L28xL3YvdDIvZjIvbTM2Ni9BUU53a21PZ0dseGRKaUtlVW9HTXF3bmdWOU5vVm01SEZmSXA0VGZqOUNTOGVhXzBvMWtfZnRtUTVBWGtKTl9iTVNHYmhPM3NWN2FSZGhTeUdYZFE5THZPMVAxS01FdlBVaGlxUHZ2VWY5aXBzQS5tcDQ/X25jX2NhdD0xMDkmX25jX3NpZD01ZTk4NTEmX25jX2h0PXZpZGVvLWxocjYtMS54eC5mYmNkbi5uZXQmX25jX29oYz1Bbm5qVXplUWtJRVE3a052d0ZNQ1dtXyZlZmc9ZXlKMlpXNWpiMlJsWDNSaFp5STZJbmh3ZGw5d2NtOW5jbVZ6YzJsMlpTNUdRVU5GUWs5UFN5NHVRek11TVRJNE1DNWtZWE5vWDJneU5qUXRZbUZ6YVdNdFoyVnVNbDgzTWpCd0lpd2llSEIyWDJGemMyVjBYMmxrSWpveE5EYzVOalExTlRRd01EUTRPVGt3TENKMmFWOTFjMlZqWVhObFgybGtJam94TURFeU1pd2laSFZ5WVhScGIyNWZjeUk2T1RJM0xDSjFjbXhuWlc1ZmMyOTFjbU5sSWpvaWQzZDNJbjAlM0QmY2NiPTE3LTEmdnM9OTY0YWI4NTc3ZWM5OWUxZiZfbmNfdnM9SEJrc0ZRSVlSV1ppWDJWd2FHVnRaWEpoYkM4M01EUXlPVVF3TlRWRU9VUTNSVEkxTjBNMU1FUkdRams1UmpJeU5FUTVSbDl0ZEY4eFgzWnBaR1Z2WDJSaGMyaHBibWwwTG0xd05CVUFBc2dCRWdBVkFoaEZabUpmWlhCb1pXMWxjbUZzTHpZNU5FWXhRa1pGTnpJMk1EZERSVE0wTmpCR1JFRkRNelkyUWpVd1EwSXdYMjEwWHpCZllYVmthVzlmWkdGemFHbHVhWFF1YlhBMEZRSUN5QUVTQUNnQUdBQWJBb2dIZFhObFgyOXBiQUV4RW5CeWIyZHlaWE56YVhabFgzSmxZMmx3WlFFeEZRQUFKcnlCOTZ6YTdxQUZGUUlvQWtNekxCZEFqUHg2NFVldUZCZ1paR0Z6YUY5b01qWTBMV0poYzJsakxXZGxiakpmTnpJd2NCRUFkUUpsbEo0QkFBJl9uY19naWQ9bVhmNDNaSFNxQU8zbkpxNTdvYVRMUSZfbmNfenQ9Mjgmb2g9MDBfQWZWbFVYYzB5TVp6azZuYXZyRVlZT2FOdlVxVWJaUWxzZ0EwMVBMRExKbTVXQSZvZT02OEFDRThGNyZiaXRyYXRlPTE3NjA1NzImdGFnPWRhc2hfaDI2NC1iYXNpYy1nZW4yXzcyMHA=";
+      const videoUrl = atob(encodedSrc);
+      const iframe = document.getElementById('videoIframe');
+      iframe.src = videoUrl;
+      iframe.style.display = 'block';
       document.getElementById('video-overlay').style.display = 'none';
     }
   </script>
 
-  <style>
-  #histats_wrapper, #histatsC, #histats_counter {
-    display: none !important;
-    visibility: hidden;
-    height: 0;
-    overflow: hidden;
-  }
-  #coming-soon {
-    background: #111;
-    color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(255,255,255,0.3);
-  }
-  </style>
+<!-- Histats.com START -->
+<style>
+#histats_wrapper, #histatsC, #histats_counter {
+  display: none !important;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
+</style>
+<div id="histats_wrapper">
+  <div id="histats_counter"></div>
+</div>
+<script type="text/javascript">
+  var _Hasync = _Hasync || [];
+  _Hasync.push(['Histats.startgif', '1,4944258,4,10047,""']);
+  _Hasync.push(['Histats.fasi', '1']);
+  _Hasync.push(['Histats.track_hits', '']);
+  (function () {
+    var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+    hs.src = ('//s10.histats.com/js15_gif_as.js');
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+  })();
+</script>
+<noscript>
+  <div id="histats_wrapper">
+    <a href="/" target="_blank"><div id="histatsC">
+      <img border="0" src="//s4is.histats.com/stats/i/4944258.gif?4944258&103">
+    </div></a>
+  </div>
+</noscript>
+<!-- Histats.com END -->
 
-  <div id="histats_wrapper"><div id="histats_counter"></div></div>
-  <script type="text/javascript">
-    var _Hasync = _Hasync || [];
-    _Hasync.push(['Histats.startgif', '1,4944258,4,10047,""']);
-    _Hasync.push(['Histats.fasi', '1']);
-    _Hasync.push(['Histats.track_hits', '']);
-    (function () {
-      var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-      hs.src = ('//s10.histats.com/js15_gif_as.js');
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-    })();
-  </script>
 </body>
 </html>
